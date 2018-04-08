@@ -47,6 +47,9 @@ class TableAPI(Resource):
 
                 ref_table = []
                 ref_col = []
+                expression = []  # с экспрессиями у меня возникла заминка к сожалению.
+                #  возможно надо немного менять структуру извлечения ограничений
+
                 for column in constrain.columns:
                     if hasattr(column, 'base_columns'):
                         for b_column in column.base_columns:

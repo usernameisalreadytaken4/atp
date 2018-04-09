@@ -28,3 +28,12 @@ def mark_random_orders_accepted(limit=100):
         db.session.commit()
     except:
         db.session.rollback()
+        
+
+def mark_random_orders_accepted():  
+    for order in db.session.query(Order).filter_by(state=0).yield_per(100).enable_eagerloads(False):
+        order.state = random.randint(0, 1)
+    try:
+        db.session.commit()
+    except:
+        db.session.rollback()
